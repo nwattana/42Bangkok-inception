@@ -18,7 +18,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
-      - server_network
+      - server_db
     env_file:
       - .env
     restart: always
@@ -30,6 +30,7 @@ services:
       - wordpress_data:/var/www/html
     restart: always
     networks:
+      - server_db
       - server_network
     env_file:
       - .env
@@ -40,13 +41,16 @@ services:
     ports:
       - 8080:8080
     networks:
-      - server_network
+      - server_db
     
 
 networks:
   server_network:
     driver: bridge
     name: server_network
+  server_db:
+    driver: bridge
+    name: server_db
 
 volumes:
   wordpress_data:

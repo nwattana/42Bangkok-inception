@@ -1,4 +1,5 @@
-FROM debian:bullseye
+FROM debian:bookworm
+# https://www.debian.org/releases/
 
 RUN apt-get update && apt-get install -y nginx openssl
 
@@ -10,6 +11,5 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 COPY ./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 RUN apt update && apt install -y net-tools fish
-
 
 CMD ["nginx", "-g", "daemon off;"]
