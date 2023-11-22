@@ -9,10 +9,10 @@ RUN chown -R mysql:mysql /run/mysqld
 RUN apt update && apt install -y net-tools fish
 
 COPY ./tools/entrypoint.sh /usr/bin/entrypoint.sh
-COPY ./conf/wordpress.sql  /usr/local/bin/wordpress_setup.sql
+COPY ./conf/wordpress.sql  /usr/local/bin/wordpress.sql
 
 RUN chmod +x /usr/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/wordpress_setup.sql
+RUN chmod +x /usr/local/bin/wordpress.sql
 
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
 
