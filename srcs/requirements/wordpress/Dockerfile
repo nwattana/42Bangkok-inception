@@ -37,5 +37,4 @@ WORKDIR /var/www/html/
 
 EXPOSE 9000
 
-# CMD ["tail", "-f", "/dev/null"] 
 CMD ["/usr/sbin/php-fpm8.2", "-F"]

@@ -8,12 +8,12 @@ RUN chown -R mysql:mysql /run/mysqld
 
 RUN apt update && apt install -y net-tools fish
 
-COPY ./scripts/entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./tools/entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./conf/wordpress.sql  /usr/local/bin/wordpress_setup.sql
+
 RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/wordpress_setup.sql
 
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
 
-# CMD ["tail", "-f", "/dev/null"]
 CMD ["mysqld","-uroot","--bind-address=0.0.0.0"]
-
-# TODO dump old db to here

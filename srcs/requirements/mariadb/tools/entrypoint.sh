@@ -30,7 +30,7 @@ Y
 EOF
 echo "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$MARIADB_ROOT_PASS'; FLUSH PRIVILEGES;" | mysql -uroot
 echo "CREATE DATABASE IF NOT EXISTS $MARIADB_NAME; GRANT ALL ON $MARIADB_NAME.* TO '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_USER_PASS'; FLUSH PRIVILEGES;" | mysql -uroot
-# mysql -uroot -p$MARIADB_ROOT_PASS $MARIADB_NAME < /usr/local/bin/wordpress.sql
+mysql -uroot -p$MARIADB_ROOT_PASS $MARIADB_NAME < /usr/local/bin/wordpress_setup.sql
 
 fi
 
